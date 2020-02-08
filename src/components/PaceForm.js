@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import styled from 'styled-components';
-import ConversionOptions from './ConversionOptions';
+import React, { Component } from 'react';
 
-const Form = styled.form`
+import ConversionOptions from "./ConversionOptions";
+import PaceInput from "./PaceInput";
+import DistanceInput from "./DistanceInput";
+import ResultTable from "./ResultTable";
 
-`;
+import Formatter from "./utils/Formatter";
 
-export default class PaceForm extends Component {
+class PaceForm extends Component {
   state = {
     imperial: false,
     conversionMode: "auto",
@@ -19,48 +20,64 @@ export default class PaceForm extends Component {
 
   onChange = name => event => {
     let val = event.target.value;
+    this.setState(state => {
+      let newState = { [name]: val };
+
+      if ("time" === name) {
+        console.log("TIME!");
+        if (5 === val.length) {
+          newState.time = val + ":00";
+        }
+
+        newState.pace =
+          Formatter.stringToSeconds(newState.time) / state.distance;
+
+        if ("00:00:00" === newState.time) {
+          newState.pace = 360;
+        }
+      } else if ("distance" === name) {
+        newState.pace = Formatter.stringToSeconds(state.time) / val;
+      } else if ("pace" === name) {
+        newState.time = Formatter.secondsToTimeString(
+          state.distance * val,
+          true
+        );
+        console.log(newState.time);
+      }
+
+      return newState;
+    });
   };
   render() {
     return (
-      <Form noValidate autoComplete="off">
+      <div>
+        <form autoComplete="off">
           <ConversionOptions
             value={this.state.conversionMode}
-            onChange={onChange()}
+            onChange={this.onChange("conversionMode")}
           />
-          <fieldset>
-            <legend>Pace</legend>
-            <div className="inputContainer">
-              <input aria-invalid="false" name="pace" type="number"/>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Distance and Time</legend>
-            <div className="inputContainer">
-            <input aria-invalid="false" name="distance" type="number" />
-            </div>
-          </fieldset>
-          <fieldset>
-            <table>
-              <thead>
-                <tr>
-                <th>Distance</th>
-                <th>Time</th>
-                <th>Distance</th>
-                <th>Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <td>0:36</td>
-                <td><strong>2 km</strong></td>
-                <td><strong>100m</strong></td>
-                <td>12:00</td>
-                </tr>
-              </tbody>
-            </table>
-          </fieldset>
-      </Form>
+          <PaceInput
+            value={this.state.pace}
+            unit={this.state.paceUnit}
+            onChangeValue={this.onChange("pace")}
+            onChangeUnit={this.onChange("paceUnit")}
+          />
+          <DistanceInput
+            distance={this.state.distance}
+            distanceUnit={this.state.distanceUnit}
+            time={this.state.time}
+            onChangeDistance={this.onChange("distance")}
+            onChangeDistanceUnit={this.onChange("distanceUnit")}
+            onChangeTime={this.onChange("time")}
+          />
+          <ResultTable
+            pace={this.state.pace}
+            imperial={this.state.imperial}
+          />
+        </form>
+      </div>
     )
   }
 }
 
+export default PaceForm;
