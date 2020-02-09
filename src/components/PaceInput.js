@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -13,12 +12,11 @@ import Formatter from "./utils/Formatter";
 import paceUnits from "./utils/PaceUnits";
 
 
-const iOSBoxShadow =
-  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+const BoxShadow = '0 3px 1px rgba(0,0,0,0.1)';
 
 const RangeSLider = withStyles({
   root: {
-    color: '#3bcde2',
+    color: '#4b5373',
     height: 8,
     margin: '20px 0',
   },  
@@ -26,14 +24,15 @@ const RangeSLider = withStyles({
     height: 28,
     width: 28,
     backgroundColor: '#fff',
-    boxShadow: iOSBoxShadow,
+    boxShadow: BoxShadow,
     marginTop: -14,
     marginLeft: -14,
+    borderRadius: '30%',
     '&:focus,&:hover,&$active': {
-      boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+      boxShadow: '0 0 0 5px rgba(0, 0, 0, 0.1)',
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
-        boxShadow: iOSBoxShadow,
+        boxShadow: BoxShadow,
       },
     },
   },

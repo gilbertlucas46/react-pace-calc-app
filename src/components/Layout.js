@@ -14,6 +14,7 @@ const theme = {
     purpleLight: "#b6bce2",
     sea: "#3bcde2",
     white: "#ffff",
+    borderColor: "#4b5373",
   },
   fonts: ["sans-serif", "Roboto"],
   radius:  {

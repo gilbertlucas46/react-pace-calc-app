@@ -5,6 +5,8 @@ const FooterContainer = styled.header`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   text-align: center;
+  margin: 2em auto;
+  color: ${props => props.theme.colors.purpleLight};
 `;
 
 export const Footer = () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
@@ -10,6 +11,28 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 import Formatter from "./utils/Formatter";
+
+const TableContainer = styled.div`
+  table {
+    thead {
+      tr {
+        th {
+          background-color: rgba(42, 47, 67, 0.4);
+          color: ${props => props.theme.colors.purpleLight};
+          border-bottom: 1px solid ${props => props.theme.colors.borderColor};
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          color: ${props => props.theme.colors.purpleLight};
+          border-bottom: 1px solid ${props => props.theme.colors.borderColor};
+        }
+      }
+    }
+  }
+`;
 
 const columns = [
   { id: 'header_1', label: 'Distance', minWidth: 90, align: 'left',},
@@ -56,7 +79,7 @@ const ResultTable = ({pace, imperial}) => {
       };
     });
   return (
-    <>
+    <TableContainer>
       <FormControl className={classes.container} component="fieldset">
       <FormLabel component="legend">
         Distances
@@ -97,7 +120,7 @@ const ResultTable = ({pace, imperial}) => {
         </TableBody>
       </Table>
     </FormControl>
-    </>
+    </TableContainer>
   )
 }
 

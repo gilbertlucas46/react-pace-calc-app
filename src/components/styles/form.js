@@ -1,16 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const loading = keyframes`
-  from {
-    background-position: 0 0;
-    /* rotate: 0; */
-  }
-
-  to {
-    background-position: 100% 100%;
-    /* rotate: 360deg; */
-  }
-`;
+import styled from 'styled-components';
 
 const Form = styled.form`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
@@ -28,13 +16,19 @@ const Form = styled.form`
   .Inputs {
     flex-flow: inherit;
     margin: 0 5px;
-  }
-  .contents {
-    .Inputs  {
-      > div, svg{
-        color:  ${props => props.theme.colors.purpleLight};
+    > div {
+      &:hover {
+        &:before {
+          border-bottom: 2px solid rgba(42,47,67,0.4);
+        }
+      }
+      &:before {
+        border-bottom: 2px solid ${props => props.theme.colors.borderColor};
       }
     }
+    > div, svg{
+        color:  ${props => props.theme.colors.purpleLight};
+      }
   }
   .paces {
     display: flex;
@@ -75,12 +69,15 @@ const Form = styled.form`
     padding: 0;
     width: 100%;
     legend {
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.purpleLight};
       font-size: 1em;
       margin-bottom: .3em;
       line-height: 2em;
     }
     &.title {
+      legend {
+        margin-bottom: .6em;
+      }
       &:before {
         height: 2px;
       }
@@ -88,7 +85,7 @@ const Form = styled.form`
     > div {
       display: flex;
       justify-content: center;
-      margin: 10px -5px;
+      margin: .8em -5px;
       .Inputs {
         flex-flow: inherit;
         margin: 0 5px;
@@ -112,7 +109,6 @@ const Form = styled.form`
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;
-      animation: ${loading} 0.5s linear infinite;
     }
   }
 `;
