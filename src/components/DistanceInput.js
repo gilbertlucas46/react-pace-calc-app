@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+
+import styled from 'styled-components'; 
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+
+const DistanceContainer = styled.div`
+  .Inputs {
+    display: flex;
+  }
+`;
 
 class DistanceInput extends Component {
   onChangeDistance = event => {
@@ -46,11 +58,12 @@ class DistanceInput extends Component {
     }
 
     return (
-      <div>
-          <fieldset component="fieldset">
-            <label component="legend">Distance and Time</label>
-            <>
-              <input
+      <DistanceContainer>
+        <div className="Inputs">
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Distance and Time</FormLabel>
+            <div>
+              <TextField
                 type="number"
                 name="distance"
                 value={distanceFormatted}
@@ -61,20 +74,20 @@ class DistanceInput extends Component {
                   step: 0.1
                 }}
               />
-              <input
+              <TextField
                 select
                 name="distanceUnit"
                 value={distanceUnit}
                 onChange={onChangeDistanceUnit}
               >
-                <option key="km" value="km">
+                <MenuItem key="km" value="km">
                   km
-                </option>
-                <option key="mi" value="mi">
+                </MenuItem>
+                <MenuItem key="mi" value="mi">
                   mi
-                </option>
-              />
-              <input
+                </MenuItem>
+              </TextField>
+              <TextField
                 type="time"
                 name="time"
                 value={time}
@@ -83,25 +96,21 @@ class DistanceInput extends Component {
                   step: 1,
                   required: true
                 }}
-              />
-             {/*
-               <TimeInput
-                input={<TextField />}
-              />
-            */}
-            />
-        </fieldset>
-      </div>
+              />       
+            </div>
+          </FormControl>
+          </div>
+        </DistanceContainer>
     );
   }
 }
 
-// DistanceInput.propTypes = {
-//   distance: PropTypes.number.isRequired,
-//   distanceUnit: PropTypes.oneOf(["km", "mi"]).isRequired,
-//   onChangeDistance: PropTypes.func.isRequired,
-//   onChangeDistanceUnit: PropTypes.func.isRequired,
-//   onChangeTime: PropTypes.func.isRequired
-// };
+DistanceInput.propTypes = {
+  distance: PropTypes.number.isRequired,
+  distanceUnit: PropTypes.oneOf(["km", "mi"]).isRequired,
+  onChangeDistance: PropTypes.func.isRequired,
+  onChangeDistanceUnit: PropTypes.func.isRequired,
+  onChangeTime: PropTypes.func.isRequired
+};
 
 export default DistanceInput;
