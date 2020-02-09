@@ -1,12 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 import Formatter from "./utils/Formatter";
 
+const columns = [
+  { id: 'header_1', label: 'Distance', minWidth: 90, align: 'left',},
+  { id: 'header_2', label: 'Time', minWidth: 75 , align: 'right',},
+  { id: 'header_3', label: 'Distance', minWidth: 120, align: 'right', },
+  { id: 'header_4', label: 'Time', minWidth: 100, align: 'right', },
+];
 
-class Resulttable extends Component {
-  render() {
-    const { pace, imperial } = this.props;
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+  container: {
+    maxHeight: 440,
+  },
+});
+
+const ResultTable = ({pace, imperial}) => {
+    const classes = useStyles();
     let distances = [];
 
     if (imperial) {
@@ -23,59 +46,64 @@ class Resulttable extends Component {
       return {
         first: {
           distance: d[0][0],
-          time: pace * d[0][1]
+          time: pace * d[0][1],
+          align: 'left',
         },
         second: {
           distance: d[1][0],
-          time: pace * d[1][1]
+          time: pace * d[1][1],
+          align: 'right',
         }
       };
     });
-
-    return (
-      <div>
-        <fieldset component="fieldset">
-          <legend component="legend">
-            Distances
-          </legend>
-          <table>
-            <thead>
-              <tr>
-                <th>Distance</th>
-                <th>Time</th>
-                <th>Distance</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map(row => {
-                return (
-                  <tr key={row.first.time}>
-                    <th>
-                      <strong>{row.first.distance}</strong>
-                    </th>
-                    <th>
-                      {Formatter.secondsToTimeString(row.first.time)}
-                    </th>
-                    <th>
-                      <strong>{row.second.distance}</strong>
-                    </th>
-                    <th>
-                      {Formatter.secondsToTimeString(row.second.time)}
-                    </th>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </fieldset>
-      </div>
-    );
-  }
+  return (
+    <Paper className={classes.root}>
+      <FormControl className={classes.container} component="fieldset">
+      <FormLabel component="legend">
+        Distances
+      </FormLabel>
+      <Table stickyHeader aria-label="sticky table">
+        <TableHead>
+          <TableRow>
+            {columns.map(column => (
+              <TableCell
+                key={column.id}
+                align={column.align}
+                style={{ minWidth: column.minWidth }}
+              >
+                {column.label}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => {
+            return (
+              <TableRow key={row.first.time}>
+                <TableCell align={row.first.align}>
+                  <strong>{row.first.distance}</strong>
+                </TableCell>
+                <TableCell align={row.second.align}>
+                  {Formatter.secondsToTimeString(row.first.time)}
+                </TableCell>
+                <TableCell align={row.second.align}>
+                  <strong>{row.second.distance}</strong>
+                </TableCell>
+                <TableCell align={row.second.align}>
+                  {Formatter.secondsToTimeString(row.second.time)}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </FormControl>
+    </Paper>
+  )
 }
 
-Resulttable.propTypes = {
+ResultTable.propTypes = {
   pace: PropTypes.number.isRequired,
 };
 
-export default Resulttable;
+export default ResultTable;
