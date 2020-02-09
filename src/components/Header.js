@@ -13,7 +13,7 @@ const HeaderContainer = styled.header`
 const Header = () => {
   return (
     <HeaderContainer className="App-header">
-      <h1>Calculate your Pace</h1>
+      <h1><span>⏱️</span> Calculate your Pace!</h1>
     </HeaderContainer>
   );
 };
