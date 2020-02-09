@@ -13,29 +13,15 @@ import Formatter from "./utils/Formatter";
 import paceUnits from "./utils/PaceUnits";
 
 
-const PaceInputContainer = styled.div`
-  .contents {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .paces {
-    text-align:center;
-    small {
-      color:  ${props => props.theme.colors.white};
-      font-weight: normal;
-      font-size: 14px;
-    }
-  }
-`;
-
 const iOSBoxShadow =
   '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
 
 const RangeSLider = withStyles({
   root: {
-    color: '#52af77',
+    color: '#3bcde2',
     height: 8,
-  },
+    margin: '20px 0',
+  },  
   thumb: {
     height: 28,
     width: 28,
@@ -121,9 +107,9 @@ class PaceInput extends React.Component {
     }
 
     return (
-      <PaceInputContainer>
+      <>
         <div className="contents">
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" className="title">
             <FormLabel component="legend">Pace</FormLabel>
             <div>
               <TextField
@@ -131,6 +117,7 @@ class PaceInput extends React.Component {
                 name="pace"
                 value={valueInUnit}
                 onChange={this.onChangeValueInUnit}
+                className="Inputs"
                 inputProps={{
                   min: unitObject.min,
                   max: unitObject.max,
@@ -142,6 +129,7 @@ class PaceInput extends React.Component {
                 name="paceUnit"
                 value={unit}
                 onChange={onChangeUnit}
+                className="Inputs"
               >
                 {paceUnits.map(option => (
                   <MenuItem key={option.name} value={option.name}>
@@ -160,17 +148,19 @@ class PaceInput extends React.Component {
           </FormControl>
         </div>
         <div className="contents">
-          {(() => {
-            if (true) {
-              return paceUnits.map(unit => (
-                <div key={unit.name} className="paces">
-                  {Formatter.formatUnit(unit, value)} <small>{unit.name}</small>
-                </div>
-              ));
-            }
-          })()}
+          <div className="paces">
+            {(() => {
+              if (true) {
+                return paceUnits.map(unit => (
+                  <div key={unit.name}>
+                    {Formatter.formatUnit(unit, value)} <small>{unit.name}</small>
+                  </div>
+                ));
+              }
+            })()}
+          </div>
         </div>
-      </PaceInputContainer>
+      </>
     );
   }
 }

@@ -8,9 +8,11 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 const DistanceContainer = styled.div`
-  .Inputs {
-    display: flex;
-  }
+  .inputs  {
+      div, svg{
+        color:  ${props => props.theme.colors.white};
+      }
+    }
 `;
 
 class DistanceInput extends Component {
@@ -59,8 +61,8 @@ class DistanceInput extends Component {
 
     return (
       <DistanceContainer>
-        <div className="Inputs">
-          <FormControl component="fieldset">
+        <div className="contents">
+          <FormControl component="fieldset" className="title">
             <FormLabel component="legend">Distance and Time</FormLabel>
             <div>
               <TextField
@@ -68,6 +70,7 @@ class DistanceInput extends Component {
                 name="distance"
                 value={distanceFormatted}
                 onChange={onChangeDistance}
+                className="Inputs"
                 inputProps={{
                   min: 0,
                   max: 300,
@@ -79,6 +82,7 @@ class DistanceInput extends Component {
                 name="distanceUnit"
                 value={distanceUnit}
                 onChange={onChangeDistanceUnit}
+                className="Inputs"
               >
                 <MenuItem key="km" value="km">
                   km
@@ -92,6 +96,7 @@ class DistanceInput extends Component {
                 name="time"
                 value={time}
                 onChange={onChangeTime}
+                className="Inputs"
                 inputProps={{
                   step: 1,
                   required: true

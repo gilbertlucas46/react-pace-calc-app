@@ -25,6 +25,31 @@ const Form = styled.form`
     display: block;
     margin-bottom: 1rem;
   }
+  .Inputs {
+    flex-flow: inherit;
+    margin: 0 5px;
+  }
+  .contents {
+    .Inputs  {
+      > div, svg{
+        color:  ${props => props.theme.colors.purpleLight};
+      }
+    }
+  }
+  .paces {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    div {
+      justify-content: space-evenly;
+    }
+    text-align:center;
+    small {
+      color:  ${props => props.theme.colors.purpleLight};
+      font-weight: normal;
+      font-size: 14px;
+    }
+  }
   input,
   textarea,
   select {
@@ -34,7 +59,7 @@ const Form = styled.form`
     height: 32px;
     border: 0;
     border-radius: 4px;
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.purpleLight};
   }
   button {
     width: auto;
@@ -54,6 +79,27 @@ const Form = styled.form`
       font-size: 1em;
       margin-bottom: .3em;
       line-height: 2em;
+    }
+    &.title {
+      &:before {
+        height: 2px;
+      }
+    }
+    > div {
+      display: flex;
+      justify-content: center;
+      margin: 10px -5px;
+      .Inputs {
+        flex-flow: inherit;
+        margin: 0 5px;
+        div {
+          height: 42px;
+          line-height:42px;
+          &:focus {
+            background-color: transparent;
+          }
+        }
+      }
     }
     &[disabled] {
       opacity: 0.5;

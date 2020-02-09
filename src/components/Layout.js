@@ -11,6 +11,8 @@ const theme = {
     blueDark: "#2a2f43",
     blueLight: "#353a4f",
     highLights: "#38c3d8",
+    purpleLight: "#b6bce2",
+    sea: "#3bcde2",
     white: "#ffff",
   },
   fonts: ["sans-serif", "Roboto"],
