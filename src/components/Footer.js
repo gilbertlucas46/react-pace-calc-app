@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+
+const FooterContainer = styled.header`
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
+`;
 
 export const Footer = () => {
   return (
-    <div>
+    <FooterContainer>
      Created with <span role="img" aria-label="love">❤️</span> 
-    </div>
+    </FooterContainer>
   )
 }

@@ -2,7 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
 `;
 
 const Header = () => {
