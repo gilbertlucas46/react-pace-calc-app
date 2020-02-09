@@ -7,12 +7,12 @@ const MainLayout = styled.main`
 
 `;
 
-const Layout = () => {
+const Layout = ( {children}) => {
   return (
     <>
       <Header/>
       <MainLayout>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas velit consequatur ad maiores fugiat excepturi ut ex, quo totam, perspiciatis, doloribus rerum quasi molestiae dicta tempora aperiam eius! Voluptatem, id.</p>
+       {children}
       </MainLayout>
     </>
   )

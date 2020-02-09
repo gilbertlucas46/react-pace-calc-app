@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Paper from "@material-ui/core/Paper";
 
-import ConversionOptions from "./ConversionOptions";
+import Layout from './Layout';
 import PaceInput from "./PaceInput";
 import DistanceInput from "./DistanceInput";
 import ResultTable from "./ResultTable";
@@ -50,32 +51,30 @@ class PaceForm extends Component {
   };
   render() {
     return (
-      <div>
-        <form autoComplete="off">
-          <ConversionOptions
-            value={this.state.conversionMode}
-            onChange={this.onChange("conversionMode")}
-          />
-          <PaceInput
-            value={this.state.pace}
-            unit={this.state.paceUnit}
-            onChangeValue={this.onChange("pace")}
-            onChangeUnit={this.onChange("paceUnit")}
-          />
-          <DistanceInput
-            distance={this.state.distance}
-            distanceUnit={this.state.distanceUnit}
-            time={this.state.time}
-            onChangeDistance={this.onChange("distance")}
-            onChangeDistanceUnit={this.onChange("distanceUnit")}
-            onChangeTime={this.onChange("time")}
-          />
-          <ResultTable
-            pace={this.state.pace}
-            imperial={this.state.imperial}
-          />
-        </form>
-      </div>
+      <Layout>
+        <Paper>
+          <form autoComplete="off">
+            <PaceInput
+              value={this.state.pace}
+              unit={this.state.paceUnit}
+              onChangeValue={this.onChange("pace")}
+              onChangeUnit={this.onChange("paceUnit")}
+            />
+            <DistanceInput
+              distance={this.state.distance}
+              distanceUnit={this.state.distanceUnit}
+              time={this.state.time}
+              onChangeDistance={this.onChange("distance")}
+              onChangeDistanceUnit={this.onChange("distanceUnit")}
+              onChangeTime={this.onChange("time")}
+            />
+            <ResultTable
+              pace={this.state.pace}
+              imperial={this.state.imperial}
+            />
+          </form>
+        </Paper>
+      </Layout>
     )
   }
 }
