@@ -14,12 +14,13 @@ const loading = keyframes`
 
 const Form = styled.form`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  background: rgba(0, 0, 0, 0.02);
-  border: 5px solid white;
+  background: ${props => props.theme.colors.blueLight};
   padding: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;
+  border-radius: ${props => props.theme.radius.body};
+  color: ${props => props.theme.colors.white};
   label {
     display: block;
     margin-bottom: 1rem;
@@ -33,10 +34,7 @@ const Form = styled.form`
     height: 32px;
     border: 0;
     border-radius: 4px;
-    &:focus {
-      outline: 0;
-      border-color: ${props => props.theme.orange};
-    }
+    color: ${props => props.theme.colors.white};
   }
   button {
     width: auto;
@@ -51,6 +49,12 @@ const Form = styled.form`
     border: 0;
     padding: 0;
     width: 100%;
+    legend {
+      color: ${props => props.theme.colors.white};
+      font-size: 1em;
+      margin-bottom: .3em;
+      line-height: 2em;
+    }
     &[disabled] {
       opacity: 0.5;
     }
@@ -58,7 +62,7 @@ const Form = styled.form`
       height: 10px;
       content: '';
       display: block;
-      background-image: linear-gradient(to right, #ff3019 0%, #e2b04a 50%, #ff3019 100%);
+      background-image: linear-gradient(to right, #38c3d8 0%, #655fff 50%, #38c3d8 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;

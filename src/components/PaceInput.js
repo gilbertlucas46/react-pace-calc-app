@@ -16,6 +16,15 @@ import paceUnits from "./utils/PaceUnits";
 const PaceInputContainer = styled.div`
   .contents {
     display: flex;
+    justify-content: space-evenly;
+  }
+  .paces {
+    text-align:center;
+    small {
+      color:  ${props => props.theme.colors.white};
+      font-weight: normal;
+      font-size: 14px;
+    }
   }
 `;
 
@@ -154,7 +163,7 @@ class PaceInput extends React.Component {
           {(() => {
             if (true) {
               return paceUnits.map(unit => (
-                <div key={unit.name}>
+                <div key={unit.name} className="paces">
                   {Formatter.formatUnit(unit, value)} <small>{unit.name}</small>
                 </div>
               ));

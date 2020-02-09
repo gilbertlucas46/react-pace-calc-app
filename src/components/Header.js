@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const HeaderContainer = styled.header`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
+  h1 {
+    color:  ${props => props.theme.colors.white};
+    font-weight: normal;
+  }
 `;
 
 const Header = () => {

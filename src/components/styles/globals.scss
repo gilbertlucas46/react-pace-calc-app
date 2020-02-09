@@ -1,0 +1,12 @@
+// colors
+$bodyBG: #2a2f43;
+$bodyBG-light: #353a4f;
+$highLights: #38c3d8;
+
+//fonts
+$Barlow: 'Barlow', sans-serif;
+
+body {
+  background-color: $bodyBG;
+  font-family: $Barlow;
+}
