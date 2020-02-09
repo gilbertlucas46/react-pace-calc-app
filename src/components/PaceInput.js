@@ -138,7 +138,6 @@ class PaceInput extends React.Component {
               </TextField>
             </div>
             <RangeSLider
-              valueLabelDisplay="auto"
               value={valueSlider}
               min={0}
               max={600}

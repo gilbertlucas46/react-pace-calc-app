@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Paper from "@material-ui/core/Paper";
-
-import Layout from './Layout';
 import Form from './styles/form';
 import PaceInput from "./PaceInput";
 import DistanceInput from "./DistanceInput";
@@ -52,7 +49,7 @@ class PaceForm extends Component {
   };
   render() {
     return (
-      <Layout>
+      <>
         <div>
           <Form autoComplete="off">
             <PaceInput
@@ -75,7 +72,7 @@ class PaceForm extends Component {
             />
           </Form>
         </div>
-      </Layout>
+      </>
     )
   }
 }
