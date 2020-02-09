@@ -19,6 +19,8 @@ const PaceInputContainer = styled.div`
   }
 `;
 
+const iOSBoxShadow =
+  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
 
 const RangeSLider = withStyles({
   root: {
@@ -26,14 +28,18 @@ const RangeSLider = withStyles({
     height: 8,
   },
   thumb: {
-    height: 24,
-    width: 24,
+    height: 28,
+    width: 28,
     backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    marginTop: -8,
-    marginLeft: -12,
+    boxShadow: iOSBoxShadow,
+    marginTop: -14,
+    marginLeft: -14,
     '&:focus,&:hover,&$active': {
-      boxShadow: 'inherit',
+      boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+      // Reset on touch devices, it doesn't add specificity
+      '@media (hover: none)': {
+        boxShadow: iOSBoxShadow,
+      },
     },
   },
   active: {},
@@ -41,11 +47,9 @@ const RangeSLider = withStyles({
     left: 'calc(-50% + 4px)',
   },
   track: {
-    height: 8,
     borderRadius: 4,
   },
   rail: {
-    height: 8,
     borderRadius: 4,
   },
 })(Slider);

@@ -30,14 +30,15 @@ const Form = styled.form`
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 1px solid black;
+    height: 32px;
+    border: 0;
+    border-radius: 4px;
     &:focus {
       outline: 0;
       border-color: ${props => props.theme.orange};
     }
   }
-  button,
-  input[type='submit'] {
+  button {
     width: auto;
     background: #F26101;
     color: white;
@@ -49,7 +50,7 @@ const Form = styled.form`
   fieldset {
     border: 0;
     padding: 0;
-
+    width: 100%;
     &[disabled] {
       opacity: 0.5;
     }
