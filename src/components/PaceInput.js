@@ -1,51 +1,50 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import { Slider } from '@material-ui/core';
+import { Slider } from "@material-ui/core";
 
 import Formatter from "./utils/Formatter";
 import paceUnits from "./utils/PaceUnits";
 
-
-const BoxShadow = '0 3px 1px rgba(0,0,0,0.1)';
+const BoxShadow = "0 3px 1px rgba(0,0,0,0.1)";
 
 const RangeSLider = withStyles({
   root: {
-    color: '#4b5373',
+    color: "#4b5373",
     height: 8,
-    margin: '20px 0',
-  },  
+    margin: "20px 0"
+  },
   thumb: {
     height: 28,
     width: 28,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     boxShadow: BoxShadow,
     marginTop: -14,
     marginLeft: -14,
-    borderRadius: '30%',
-    '&:focus,&:hover,&$active': {
-      boxShadow: '0 0 0 5px rgba(0, 0, 0, 0.1)',
+    borderRadius: "30%",
+    "&:focus,&:hover,&$active": {
+      boxShadow: "0 0 0 5px rgba(0, 0, 0, 0.1)",
       // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        boxShadow: BoxShadow,
-      },
-    },
+      "@media (hover: none)": {
+        boxShadow: BoxShadow
+      }
+    }
   },
   active: {},
   valueLabel: {
-    left: 'calc(-50% + 4px)',
+    left: "calc(-50% + 4px)"
   },
   track: {
-    borderRadius: 4,
+    borderRadius: 4
   },
   rail: {
-    borderRadius: 4,
-  },
+    borderRadius: 4
+  }
 })(Slider);
 
 class PaceInput extends React.Component {
@@ -89,16 +88,16 @@ class PaceInput extends React.Component {
     let unitObject = this.getUnitObject();
     let valueInUnit = unitObject.fromSecondsPerKm(value);
     const valueSlider = roundTo(this.toSliderValue(unitObject, valueInUnit), 2);
-    
+
     function roundTo(n, digits) {
       if (digits === undefined) {
         digits = 0;
       }
- 
+
       var multiplicator = Math.pow(10, digits);
       n = parseFloat((n * multiplicator).toFixed(11));
-      var test =(Math.round(n) / multiplicator);
-      return +(test.toFixed(digits));
+      var test = Math.round(n) / multiplicator;
+      return +test.toFixed(digits);
     }
 
     if (valueInUnit.toFixed) {
@@ -152,7 +151,8 @@ class PaceInput extends React.Component {
               if (true) {
                 return paceUnits.map(unit => (
                   <div key={unit.name}>
-                    {Formatter.formatUnit(unit, value)} <small>{unit.name}</small>
+                    {Formatter.formatUnit(unit, value)}{" "}
+                    <small>{unit.name}</small>
                   </div>
                 ));
               }

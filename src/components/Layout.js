@@ -1,9 +1,9 @@
-import React from 'react';
-import styled,{ ThemeProvider } from 'styled-components';
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
 
-import Header from './Header';
-import PaceForm from './PaceForm';
-import {Footer} from './Footer';
+import Header from "./Header";
+import PaceForm from "./PaceForm";
+import { Footer } from "./Footer";
 
 // Define our theme
 const theme = {
@@ -14,12 +14,12 @@ const theme = {
     purpleLight: "#b6bce2",
     sea: "#3bcde2",
     white: "#ffff",
-    borderColor: "#4b5373",
+    borderColor: "#4b5373"
   },
   fonts: ["sans-serif", "Roboto"],
-  radius:  {
+  radius: {
     body: "14px",
-    inputs: "4px",
+    inputs: "4px"
   },
   fontSizes: {
     small: "1em",
@@ -27,7 +27,7 @@ const theme = {
     large: "3em"
   },
   maxWidth: "600px"
-}
+};
 
 const MainLayout = styled.main`
   max-width: ${theme.maxWidth};
@@ -37,13 +37,13 @@ const MainLayout = styled.main`
 const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Header/>
+      <Header />
       <MainLayout>
-        <PaceForm/>
+        <PaceForm />
       </MainLayout>
-      <Footer/>
+      <Footer />
     </ThemeProvider>
-  )
-}
+  );
+};
 
 export default Layout;

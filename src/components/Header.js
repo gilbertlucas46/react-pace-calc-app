@@ -1,11 +1,11 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   h1 {
-    color:  ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.white};
     font-weight: normal;
   }
 `;
@@ -15,7 +15,7 @@ const Header = () => {
     <HeaderContainer className="App-header">
       <h1>Calculate your Pace</h1>
     </HeaderContainer>
-  )
-}
+  );
+};
 
 export default Header;

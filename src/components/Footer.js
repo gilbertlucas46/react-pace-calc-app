@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const FooterContainer = styled.header`
   max-width: ${props => props.theme.maxWidth};
@@ -12,7 +12,10 @@ const FooterContainer = styled.header`
 export const Footer = () => {
   return (
     <FooterContainer>
-     Created with <span role="img" aria-label="love">❤️</span> 
+      Created with{" "}
+      <span role="img" aria-label="love">
+        ❤️
+      </span>
     </FooterContainer>
-  )
-}
+  );
+};

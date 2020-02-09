@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import styled from 'styled-components'; 
+import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 const DistanceContainer = styled.div`
-  .inputs  {
-      div, svg{
-        color:  ${props => props.theme.colors.white};
-      }
+  .inputs {
+    div,
+    svg {
+      color: ${props => props.theme.colors.white};
     }
+  }
 `;
 
 class DistanceInput extends Component {
@@ -27,19 +28,14 @@ class DistanceInput extends Component {
   };
 
   onChangeTime = event =>
-  this.props.onChangeTime({
-    target: {
-      value: event.target.value
-    }
-  });
+    this.props.onChangeTime({
+      target: {
+        value: event.target.value
+      }
+    });
 
   render() {
-    const {
-      distance,
-      distanceUnit,
-      time,
-      onChangeDistanceUnit
-    } = this.props;
+    const { distance, distanceUnit, time, onChangeDistanceUnit } = this.props;
     const { onChangeDistance, onChangeTime } = this;
 
     let distanceFormatted = distance;
@@ -101,11 +97,11 @@ class DistanceInput extends Component {
                   step: 1,
                   required: true
                 }}
-              />       
+              />
             </div>
           </FormControl>
-          </div>
-        </DistanceContainer>
+        </div>
+      </DistanceContainer>
     );
   }
 }

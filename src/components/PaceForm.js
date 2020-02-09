@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Form from './styles/form';
+import React, { Component } from "react";
+import Form from "./styles/form";
 import PaceInput from "./PaceInput";
 import DistanceInput from "./DistanceInput";
 import ResultTable from "./ResultTable";
@@ -73,7 +73,7 @@ class PaceForm extends Component {
           </Form>
         </div>
       </>
-    )
+    );
   }
 }
 
