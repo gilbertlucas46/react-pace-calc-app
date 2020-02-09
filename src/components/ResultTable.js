@@ -78,7 +78,7 @@ const ResultTable = ({pace, imperial}) => {
         <TableBody>
           {rows.map(row => {
             return (
-              <TableRow key={row.first.time}>
+              <TableRow key={row.first.distance}>
                 <TableCell align={row.first.align}>
                   <strong>{row.first.distance}</strong>
                 </TableCell>
