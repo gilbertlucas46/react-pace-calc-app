@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from "@material-ui/core/Paper";
 
 import Layout from './Layout';
+import Form from './styles/form';
 import PaceInput from "./PaceInput";
 import DistanceInput from "./DistanceInput";
 import ResultTable from "./ResultTable";
@@ -52,8 +53,8 @@ class PaceForm extends Component {
   render() {
     return (
       <Layout>
-        <Paper>
-          <form autoComplete="off">
+        <div>
+          <Form autoComplete="off">
             <PaceInput
               value={this.state.pace}
               unit={this.state.paceUnit}
@@ -72,8 +73,8 @@ class PaceForm extends Component {
               pace={this.state.pace}
               imperial={this.state.imperial}
             />
-          </form>
-        </Paper>
+          </Form>
+        </div>
       </Layout>
     )
   }

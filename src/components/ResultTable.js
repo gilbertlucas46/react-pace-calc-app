@@ -8,7 +8,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 
 import Formatter from "./utils/Formatter";
 
@@ -57,7 +56,7 @@ const ResultTable = ({pace, imperial}) => {
       };
     });
   return (
-    <Paper className={classes.root}>
+    <>
       <FormControl className={classes.container} component="fieldset">
       <FormLabel component="legend">
         Distances
@@ -98,7 +97,7 @@ const ResultTable = ({pace, imperial}) => {
         </TableBody>
       </Table>
     </FormControl>
-    </Paper>
+    </>
   )
 }
 
