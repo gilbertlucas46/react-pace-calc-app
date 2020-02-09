@@ -7,15 +7,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-const DistanceContainer = styled.div`
-  .inputs {
-    div,
-    svg {
-      color: ${props => props.theme.colors.white};
-    }
-  }
-`;
-
 class DistanceInput extends Component {
   onChangeDistance = event => {
     this.props.onChangeDistance({
@@ -56,8 +47,7 @@ class DistanceInput extends Component {
     }
 
     return (
-      <DistanceContainer>
-        <div className="contents">
+      <div className="contents">
           <FormControl component="fieldset" className="title">
             <FormLabel component="legend">Distance and Time</FormLabel>
             <div>
@@ -101,7 +91,6 @@ class DistanceInput extends Component {
             </div>
           </FormControl>
         </div>
-      </DistanceContainer>
     );
   }
 }
