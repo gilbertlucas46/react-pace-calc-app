@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { Slider } from "@material-ui/core";
-
 import Formatter from "./utils/Formatter";
 import paceUnits from "./utils/PaceUnits";
 
