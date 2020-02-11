@@ -14,8 +14,9 @@ export const Footer = () => {
     <FooterContainer>
       Created with{" "}
       <span role="img" aria-label="love">
-        ❤️
-      </span>
+        ❤️ 
+      </span> 
+      {" "}by Gilbert
     </FooterContainer>
   );
 };

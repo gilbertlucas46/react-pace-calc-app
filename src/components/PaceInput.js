@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import styled from 'styled-components';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,6 +9,38 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { Slider } from "@material-ui/core";
 import Formatter from "./utils/Formatter";
 import paceUnits from "./utils/PaceUnits";
+
+
+export const InputsContainer = styled.div`
+  .contents {
+    .paces {
+      @media (min-width: 767px) {
+        > div {
+          position: relative;
+          font-size: .6em;
+          &:after {
+            content: '';
+            width: 1px;
+            height: 15px;
+            background-color: ${props => props.theme.colors.sea};
+            display: block;
+            position: absolute;
+            top: 0;
+            right: -45%;
+            bottom: 0;
+            margin: auto;
+            transform: rotate3d(1,1,1,45deg);
+          }
+          &:last-of-type {
+              &:after {
+                display: none;
+              }
+            }
+        }
+      }
+    }
+  }
+`;
 
 const BoxShadow = "0 3px 1px rgba(0,0,0,0.1)";
 
@@ -45,7 +78,7 @@ const RangeSLider = withStyles({
   }
 })(Slider);
 
-class PaceInput extends React.Component {
+class PaceInput extends Component {
   getUnitObject = u => {
     const { unit } = this.props;
     let unitToCompare = u || unit;
@@ -80,7 +113,6 @@ class PaceInput extends React.Component {
       ) / 100
     );
   };
-
   render() {
     const { value, unit, onChangeUnit } = this.props;
     let unitObject = this.getUnitObject();
@@ -103,7 +135,7 @@ class PaceInput extends React.Component {
     }
 
     return (
-      <>
+      <InputsContainer>
         <div className="contents">
           <FormControl component="fieldset" className="title">
             <FormLabel component="legend">Pace</FormLabel>
@@ -120,6 +152,7 @@ class PaceInput extends React.Component {
                   step: Math.pow(10, -unitObject.precision)
                 }}
               />
+              {(console.log(unit, valueInUnit))}
               <TextField
                 select
                 name="paceUnit"
@@ -157,7 +190,7 @@ class PaceInput extends React.Component {
             })()}
           </div>
         </div>
-      </>
+      </InputsContainer>
     );
   }
 }
