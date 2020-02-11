@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+#### Deployed in https://zeit.co [Live Demo](https://react-pace-calc-app.now.sh)
+
 ## Available Scripts.
 
 In the project directory, you can run:
