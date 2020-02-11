@@ -26,7 +26,7 @@ export const InputsContainer = styled.div`
             display: block;
             position: absolute;
             top: 0;
-            right: -45%;
+            right: -1.6em;
             bottom: 0;
             margin: auto;
             transform: rotate3d(1,1,1,45deg);

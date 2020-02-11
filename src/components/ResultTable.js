@@ -85,37 +85,39 @@ const ResultTable = ({ pace, imperial }) => {
     <TableContainer>
       <FormControl className={classes.container} component="fieldset">
         <FormLabel component="legend">Distances</FormLabel>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map(column => (
-                <TableCell key={column.id} align={column.align}>
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map(row => {
-              return (
-                <TableRow key={row.first.distance}>
-                  <TableCell align={row.first.align}>
-                    <strong>{row.first.distance}</strong>
+        <div className="tableWrapper">
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map(column => (
+                  <TableCell key={column.id} align={column.align}>
+                    {column.label}
                   </TableCell>
-                  <TableCell align={row.second.align}>
-                    {Formatter.secondsToTimeString(row.first.time)}
-                  </TableCell>
-                  <TableCell align={row.second.align}>
-                    <strong>{row.second.distance}</strong>
-                  </TableCell>
-                  <TableCell align={row.second.align}>
-                    {Formatter.secondsToTimeString(row.second.time)}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(row => {
+                return (
+                  <TableRow key={row.first.distance}>
+                    <TableCell align={row.first.align}>
+                      <strong>{row.first.distance}</strong>
+                    </TableCell>
+                    <TableCell align={row.second.align}>
+                      {Formatter.secondsToTimeString(row.first.time)}
+                    </TableCell>
+                    <TableCell align={row.second.align}>
+                      <strong>{row.second.distance}</strong>
+                    </TableCell>
+                    <TableCell align={row.second.align}>
+                      {Formatter.secondsToTimeString(row.second.time)}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
       </FormControl>
     </TableContainer>
   );
