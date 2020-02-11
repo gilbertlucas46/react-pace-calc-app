@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-#### Deployed in https://zeit.co [Live Demo](https://react-pace-calc-app.now.sh)
+#### Deployed in [Zeit](https://zeit.co)  [Live Demo](https://react-pace-calc-app.now.sh)
 
 ## Available Scripts.
 
